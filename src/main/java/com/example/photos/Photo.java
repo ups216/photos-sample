@@ -1,13 +1,27 @@
 package com.example.photos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.NotEmpty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
+import javax.persistence.Column;
+import javax.persistence.Lob;
+
+@Table(name = "PHOTOS")
 public class Photo {
 
+    @Id
     private String id;
 
+    @NotEmpty
     private String fileName;
 
     private String contentType;
 
+    @Lob
+    @JsonIgnore
+    @Column(name="FILE_CONTENT", columnDefinition="BLOB")
     private byte[] fileContent;
 
     public Photo() {

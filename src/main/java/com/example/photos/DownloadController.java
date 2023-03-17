@@ -17,7 +17,7 @@ public class DownloadController {
 
     //根据id下载对应图片
     @GetMapping("/download/{id}")
-    public ResponseEntity<byte[]> downloadById(@PathVariable String id) {
+    public ResponseEntity<byte[]> downloadById(@PathVariable Integer id) {
         Photo photo = photoService.get(id);
         if (photo == null) {
             return ResponseEntity.notFound().build();
